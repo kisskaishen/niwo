@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+release/
+npm-debug.log
+projectConfig.js
+source_code/project_static/apiSource.*
+.idea/
+.vscode/
+.svn/

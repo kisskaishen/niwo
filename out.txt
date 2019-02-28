@@ -1,0 +1,195 @@
+src/
+├── App.vue
+├── components/
+│   ├── pc/
+│   │   ├── breadcrumb/
+│   │   │   └── breadcrumb.vue
+│   │   ├── coeList/
+│   │   │   ├── coeList.vue
+│   │   │   └── coeMenu.vue
+│   │   ├── ft/
+│   │   │   └── ft.vue
+│   │   ├── hd/
+│   │   │   └── hd.vue
+│   │   ├── menu/
+│   │   │   └── menu.vue
+│   │   ├── noData/
+│   │   │   └── noData.vue
+│   │   └── policy/
+│   │       ├── policyItem.vue
+│   │       ├── ruleConItem.vue
+│   │       ├── ruleItem.vue
+│   │       ├── variableCon_1.vue
+│   │       ├── variableCon.vue
+│   │       ├── variableName_1.vue
+│   │       ├── variableName.vue
+│   │       └── varItem.vue
+│   ├── seo_vuex.vue
+│   └── template.vue
+├── config/
+│   ├── axios.js
+│   ├── bus.js
+│   ├── comApi.js
+│   ├── forage.js
+│   ├── jweixin-1.2.0.js
+│   ├── mockApi.js
+│   ├── router.js
+│   └── store.js
+├── main.js
+├── pages/
+│   ├── 404/
+│   │   └── 404.vue
+│   ├── index/
+│   │   └── index.vue
+│   ├── login/
+│   │   └── login.vue
+│   ├── offline/
+│   │   └── offline.vue
+│   ├── risk/
+│   │   ├── dictMg/
+│   │   │   ├── dictAdd.vue
+│   │   │   ├── dictCustom.vue
+│   │   │   ├── dictEdit.vue
+│   │   │   ├── dictList.vue
+│   │   │   ├── dictMg.vue
+│   │   │   └── distCustomAdd.vue
+│   │   ├── modelMg/
+│   │   │   ├── modelAdd.vue
+│   │   │   ├── modelDetail/
+│   │   │   │   └── gramsList.vue
+│   │   │   ├── modelList.vue
+│   │   │   ├── modelMg.vue
+│   │   │   ├── modelUml_mousemove.vue
+│   │   │   ├── modelUml.vue
+│   │   │   ├── scoreCard/
+│   │   │   │   ├── scoreCard_1.vue
+│   │   │   │   ├── scoreCard.vue
+│   │   │   │   └── scoreCardPreview.vue
+│   │   │   └── umlForm/
+│   │   │       ├── classifyForm.vue
+│   │   │       ├── computecard.vue
+│   │   │       ├── parallelForm.vue
+│   │   │       ├── ruleForm.vue
+│   │   │       ├── scoreCardForm.vue
+│   │   │       ├── selectClassify.vue
+│   │   │       ├── stratForm.vue
+│   │   │       └── testAB.vue
+│   │   ├── proMg/
+│   │   │   ├── proList.vue
+│   │   │   └── proMg.vue
+│   │   ├── risk.vue
+│   │   └── stratMg/
+│   │       ├── ruleList.vue
+│   │       ├── ruleTmpAdd.vue
+│   │       ├── stratAdd.vue
+│   │       ├── stratList.vue
+│   │       ├── stratMg.vue
+│   │       └── stratVersion.vue
+│   ├── system/
+│   │   └── system.vue
+│   └── template.vue
+└── resource/
+    ├── img/
+    │   ├── 404/
+    │   │   ├── 404.png
+    │   │   ├── noAuth.png
+    │   │   ├── noData.png
+    │   │   ├── noOrder.png
+    │   │   ├── noOrder.svg
+    │   │   ├── noResult.png
+    │   │   └── noResult.svg
+    │   ├── hd/
+    │   │   ├── hd_bg.png
+    │   │   └── logo.png
+    │   ├── icon/
+    │   │   ├── arrowLeft.png
+    │   │   ├── back.png
+    │   │   ├── plus.png
+    │   │   ├── refresh.png
+    │   │   ├── remove.png
+    │   │   ├── ruleConOpen.png
+    │   │   ├── search.png
+    │   │   ├── set.png
+    │   │   ├── sort.png
+    │   │   ├── warn_gray.png
+    │   │   └── warning.png
+    │   ├── menu/
+    │   │   ├── dictMg_active.png
+    │   │   ├── dictMg.png
+    │   │   ├── modelMG_active.png
+    │   │   ├── modelMg.png
+    │   │   ├── proMg_active.png
+    │   │   ├── proMg.png
+    │   │   ├── stratMg_active.png
+    │   │   └── stratMg.png
+    │   ├── modelList/
+    │   │   ├── fqz_off.png
+    │   │   ├── fqz.png
+    │   │   ├── notOnline.png
+    │   │   ├── offline.png
+    │   │   ├── online.png
+    │   │   ├── sxzc_off.png
+    │   │   ├── sxzc.png
+    │   │   ├── xypf_off.png
+    │   │   └── xypf.png
+    │   └── uml/
+    │       ├── opr/
+    │       │   ├── back.png
+    │       │   ├── calculator.png
+    │       │   ├── classify.png
+    │       │   ├── end.png
+    │       │   ├── parallel.png
+    │       │   ├── parallelStrat.png
+    │       │   ├── recovery.png
+    │       │   ├── revoke.png
+    │       │   ├── scoreCard.png
+    │       │   ├── start.png
+    │       │   ├── strat.png
+    │       │   ├── test.png
+    │       │   └── together.png
+    │       └── opr_back/
+    │           ├── back.png
+    │           ├── calculator.png
+    │           ├── classify.png
+    │           ├── end.png
+    │           ├── parallel.png
+    │           ├── parallelStrat.png
+    │           ├── recovery.png
+    │           ├── revoke.png
+    │           ├── scoreCard.png
+    │           ├── start.png
+    │           ├── strat.png
+    │           ├── test.png
+    │           └── together.png
+    ├── js/
+    │   ├── bankCard.js
+    │   ├── browser.js
+    │   ├── dateFormat.js
+    │   ├── http.js
+    │   ├── ie9PrevImg.js
+    │   ├── img2base64.js
+    │   ├── isType.js
+    │   ├── jsPlumbConf.js
+    │   ├── main.js
+    │   ├── pages/
+    │   │   └── modelUml.js
+    │   └── regular.js
+    └── style/
+        ├── base/
+        │   ├── _animation.scss
+        │   ├── _media.scss
+        │   ├── _mixin.scss
+        │   └── _var.scss
+        ├── common/
+        │   ├── _color.scss
+        │   ├── _font_m.scss
+        │   ├── _font_pc.scss
+        │   ├── _reset.scss
+        │   └── _simple.scss
+        ├── pages/
+        │   ├── _index.scss
+        │   └── _ruleConItem.scss
+        ├── style.scss
+        └── theme/
+            └── _elementVariables.scss
+41 directories, 152 files.

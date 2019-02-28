@@ -1,0 +1,53 @@
+进入页面
+1.获取数据
+--请求接口方法getContent里面/mcs/mold/content接口获取到线列表lineList和节点列表nodeList
+--然后调用渲染方法rendNodeList，在这里实例化jsplumb，并调用连线方法lineFn，这里面封装的是一些连线的方法，初次进入页面用不到
+--对节点列表nodeList遍历渲染节点，调用createNode方法，创建节点，并给他赋值属性click方法，并添加周围的端点
+--对线列表lineList遍历渲染节点，调用createConnection方法，用jsplumb自己的api连线，并得到线id值，如果有连线上的描述，显示描述
+--调用checkOnlyNode检查节点是否唯一?这里主要是对开始、结束唯一的节点进行检查，其他不影响
+
+2.获取画布大小
+--调用getUmlBdSize方法获取画布大小
+
+
+拖拽节点到画布
+1.拖拽过程
+--允许拖拽：draggable=true;拖拽方法：dragstart、drag、dragend
+--开始拖拽：cloneNode(true),克隆一个节点，并赋值一些属性，然后添加到一个中间层，等到拖拽结束放入画布
+--拖拽中：鼠标到哪，节点到哪，e.x/e.y
+--拖拽结束：定位节点在画布中的位置，并开始调用jsPlumbReady方法渲染整个画布
+
+2.创建节点
+--调用jsPlumbReady方法，通过形参的方式获取到改节点位置等信息，检查checkOnlyNode是否唯一，如果不是开始/结束，调用/mcs/node/create接口，通过和后端交互，保存到数据库中，以便下次使用，并将整个节点信通过pushNode方法，添加到一个缓存区（this.dom），用户撤销恢复操作
+
+3.删除节点
+--先选中，调用了点击事件，然后按delete键（keyCode==46）
+
+
+
+
+
+n.点击事件
+--先选中，调用switchForm方法，里面先调用returnEditFlow，清除干扰性因素，有几个逻辑需要判断
+--是否有e.target.className == 'iconAdd'（说明是可以添加冠军挑战者的节点，但是还没有添加）
+----获取节点id，添加到路由参数，跳转相关页面，并调用switchPath方法
+
+--是否有e.canvas && e.canvas.dataset.modal（说明是分类器的连线）
+----分类器出来的连线，调动setSelect，让连线加粗变色等
+----获取相关信息，跳转相关页面，分类器配置页面，没有则显示空
+
+--是否有e.target.dataset.modal（说明是元件，且有弹框的）
+----选中元件，判断几种情况
+------是否有e.target.lastElementChild.classList[0] == 'iconKing'（如果有说明是该节点已经存在冠军挑战者）
+--------根据路由moldType值判断是哪一个元件：1->模型中的策略；3->模型中的评分卡；5->流程中的情况
+----------对于5->流程中有三种情况，根据路由判断
+------------跳转的路由根据路由参数里面的值决定：creditForm(风险定价)，替换成kingform；outFrandForm决策流险定价)，替换成kingform，；scoreCardForm(评分卡)，替换成kingform，
+------当节点没有iconKing的时候，说明是普通绑定，跳转相应的路由即可（相关页面会根据路由参数中的needmoldtype请求参数不同）
+
+--e.target.dataset.nodetype == 1 || e.target.dataset.nodetype == 2（说明是开始结束元件）
+----单纯选中没有什么用哈哈
+
+--其他（说明是空白地方等）
+----调用clearSelect（清除选中）、returnEditFlow（清除其他干扰因素）
+
+这里很重要，调用了jsplumb的原生方法重绘repaintEverything

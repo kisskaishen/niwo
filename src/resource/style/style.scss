@@ -1,0 +1,22 @@
+// 定义静态资源路径
+$static:"/static";
+/* base */
+@import "base/var";// 公共变量
+@import "base/mixin";// 公共函数
+@import "base/animation";// 动画
+
+/* **************************************** UI框架主题 **************************************** */
+@import 'theme/elementVariables';// element-ui.css:176kb
+
+/* 定制样式 */
+@import "common/simple";// 高频样式习惯定义(命名参考bootstrap)
+@import "common/reset";// 覆盖框架样式
+@import "common/font_pc";// 专用字体样式
+@import "common/color";// 专用字体样式
+
+
+
+
+
+/* pages_style */
+/*@import "pages/index";*/

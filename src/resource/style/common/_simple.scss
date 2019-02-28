@@ -1,0 +1,607 @@
+#app{
+    /**************************** 宽高 ****************************/
+    .w100{width:100%;}
+    .h100{height:100%;}
+    .wh100{width:100%;height:100%;}
+    .autoW{width:auto;}
+    .autoH{height:auto;}
+
+    /**************************** 行高 ****************************/
+    .lh1{line-height:1;}
+    .lh12{line-height:1.2;}
+    .lh13{line-height:1.3;}
+    .lh14{line-height:1.4;}
+    .lh15{line-height:1.5;}
+    .lh2{line-height:2.0;}
+    .bold{font-weight: bold;}
+
+    /**************************** margin ****************************/
+    .mg_0{margin: 0;}
+    .mg_t_0{margin-top: 0;}
+    .mg_b_0{margin-bottom: 0;}
+    .mg_l_0{margin-left: 0;}
+    .mg_r_0{margin-right: 0;}
+    .pd_0{padding: 0;}
+    .pd_t_0{padding-top: 0;}
+    .pd_b_0{padding-bottom: 0;}
+    .pd_l_0{padding-left: 0;}
+    .pd_r_0{padding-right: 0;}
+
+    /**************************** 边框 ****************************/
+    .noBorder{border:0;}
+    .bd_t_0{border-top:0;}
+    .bd_b_0{border-bottom:0;}
+    .bd_l_0{border-left:0;}
+    .bd_r_0{border-right:0;}
+    @include border(border,all,1px,#ccc);
+
+
+    /**************************** 圆角 ****************************/
+    .radius2{border-radius: 2px;}
+    .radius4{border-radius: 4px;}
+    .radius5{border-radius: 5px;}
+    .radius10{border-radius: 10px;}
+    .radius20{border-radius: 20px;}
+    .radius30{border-radius: 30px;}
+    .radius_circle{border-radius: 50%;}
+
+    /**************************** 浮动 ****************************/
+    .fl,.pull-left {float: left;}
+    .fr,.pull-right {float: right;}
+    .fn,.pull-none {float: none;}
+
+    /**************************** 文字对齐方式 ****************************/
+    .text-left {text-align: left;}
+    .text-right {text-align: right;}
+    .text-center {text-align: center;}
+    .text-top {vertical-align: top;}
+    .text-bottom {vertical-align: bottom;}
+    .text-middle {vertical-align: middle;}
+
+    /**************************** display| ****************************/
+    .show {display: block;}
+    .inlineBlock{display: inline-block;}
+    .hide {display:none;}
+    .clear {clear: both;}
+    .visible{visibility: visible;}
+    .hidden{visibility: hidden;}
+    .collapse{visibility: collapse;}
+
+    /**************************** other ****************************/
+    .br {width: 100%;height: 10px;overflow: hidden;text-indent: -9999px;clear: both;display: block;}
+
+    .relative {position: relative;}
+    .absolute {position: absolute;}
+    .fixed {position: fixed;}
+    .noAfter:after, .noBefore:before {
+      display: none;
+      content: inherit;
+      border: 0;  
+    }
+    .dialog{
+        .dialog_box{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1001;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+            .dialog_con{
+                width: 1080px;
+                margin: 15vh auto;
+            }
+        }
+    }
+    .mask{
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+    .zIndex1{z-index: 1}
+    .zIndex2{z-index: 2}
+
+    .pointer{
+        cursor: pointer;
+    }
+    .notAllowed{
+        cursor: not-allowed;
+    }
+
+    /************************************** 0.5px的边框 **************************************/
+    /**************************** position—0.5px的边框，className:pb_t_d_b; ****************************/
+    @include p_border(pb_t_c_b,top,1px,#ccc,before);
+    @include p_border(pb_b_c_b,bottom,1px,#ccc,before);
+    @include p_border(pb_l_c_b,left,1px,#ccc,before);
+    @include p_border(pb_r_c_b,right,1px,#ccc,before);
+    @include p_border(pb_t_c_a,top,1px,#ccc,after);
+    @include p_border(pb_b_c_a,bottom,1px,#ccc,after);
+    @include p_border(pb_l_c_a,left,1px,#ccc,after);
+    @include p_border(pb_r_c_a,right,1px,#ccc,after);
+
+    .halfborder{
+      position: relative;
+    }
+    .halfborder:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 200%;
+        border-width: 1px;
+        border-style: solid;
+        border-color:#ccc;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    /************************************** 透明度 **************************************/
+    .opacity90{@include opacity(0.90)}
+    .opacity85{@include opacity(0.85)}
+    .opacity75{@include opacity(0.75)}
+    .opacity60{@include opacity(0.60)}
+    .opacity50{@include opacity(0.50)}
+    .opacity10{@include opacity(0.10)}
+    .opacity0{@include opacity(0)}
+
+    /************************************** X行超出隐藏 **************************************/
+    // 多行输入textarea
+    .noResize{// 用户无法输入框的尺寸。
+        resize:none;
+    }
+    .overhide{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .overhide2{
+    	overflow : hidden;
+    	white-space: normal;
+    	text-overflow: ellipsis;
+    	display: -webkit-box;
+    	-webkit-line-clamp: 2;
+    	-webkit-box-orient: vertical;
+    }
+    .overhide3{
+    	overflow : hidden;
+    	white-space: normal;
+    	text-overflow: ellipsis;
+    	display: -webkit-box;
+    	-webkit-line-clamp: 3;
+    	-webkit-box-orient: vertical;
+    }
+    .overhide4{
+        overflow : hidden;
+        white-space: normal;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+    /************************************** 滚动条 **************************************/
+    .overAuto{overflow:auto}
+    .scrollX{
+        overflow-x: auto;
+        overflow-y: hidden;
+        &::-webkit-scrollbar {
+            width: 20px;
+            height: 6px;
+        }
+        &::-webkit-scrollbar-thumb { /* 滑块颜色 */
+            background-color: rgba(0, 0, 0, 0.2); 
+            border-radius: 5px;
+            &:hover{// 滑块悬浮
+                background-color: rgba(0,0,0,0.5);  
+            }
+        } 
+    }
+    .scrollY{overflow-y:auto}
+    .scrollXHide{overflow-x:hidden}
+    .scrollYHide{overflow-y:hidden}
+    // scroll滚动条样式
+    @include scrollbar(scrollbar);
+    @include scrollbar(scrollbar0,0,0);
+    // 禁止滚动
+    .noScroll{  
+        position: fixed;
+        width: 100%;
+        height:100%;
+        overflow: hidden;
+    }
+    /************************************** 禁止选中 **************************************/
+    .noSelect{
+      -webkit-touch-callout:none;
+      -webkit-user-select:none;
+      -khtml-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      user-select:none;      /**************************** IE 10+ ****************************/
+    }
+    /************************************** 单选框 **************************************/
+    input.square[type="checkbox"] {
+        border: 1px solid #fff;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        width: 16px;
+        height: 16px;
+        background: white;
+        -webkit-appearance: none;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        vertical-align: middle;
+        color: #fff;
+        transition: all 0.1s linear;
+        cursor: pointer;
+        margin-right: 10px;
+        outline: none;
+        margin-top: -3px;
+        &:before {
+          content: "✔";
+          font-size: 8px;
+          outline: none;
+        }
+        &:checked {
+          background: #40BDEC;
+          border: none;
+          color: #fff;
+          outline: none;
+        }
+    }
+}
+
+/************************************** flex弹性布局 **************************************/
+// 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。
+.flex{display: flex;}
+.flex-center {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.flex-wrap{flex-wrap:wrap;}
+.inline-flex{display: inline-flex;}
+.flex-item{
+  flex: 1;
+}
+.flex{  // 三、容器的属性  
+    // 3.1 flex-direction :决定主轴的方向（即项目的排列方向）
+    &.row{// （默认值）主轴为水平方向，起点在左端。
+      flex-direction: row;
+    }
+    &.row-reverse{// 主轴为水平方向，起点在右端。
+      flex-direction: row-reverse;
+    }
+    &.column{// 主轴为垂直方向，起点在上沿。
+      flex-direction: column;
+    }
+    &.column-reverse{// 主轴为垂直方向，起点在下沿。
+      flex-direction: column-reverse;
+    } 
+    // 3.2 flex-wrap属性:换行
+    &.nowrap{// （默认）不换行。
+        flex-wrap: nowrap;
+    }
+    &.wrap{// 换行，第一行在上方。
+        flex-wrap: wrap;
+    }
+    &.wrap-reverse{// 换行，第一行在下方。
+        flex-wrap: wrap-reverse;
+    }      
+    // 3.3 flex-flow:是 flex-direction 属性和 flex-wrap 属性的简写形式，默认值为 row nowrap。
+    &.row-nowrap{
+        flex-flow: row nowrap;
+    } 
+    // 3.4 justify-content: 项目在主轴上的对齐方式。
+    &.justify-start{// (默认值)左对齐
+        justify-content: flex-start;
+    }
+    &.justify-end{// 右对齐
+        justify-content: flex-end;
+    }
+    &.justify-center{// 居中
+        justify-content: center;
+    } 
+    &.justify-between{// 两端对齐，项目之间的间隔都相等。
+        justify-content: space-between;
+    }
+    &.justify-around{// 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+        justify-content: space-around;
+    } 
+    // 3.5 align-items: 项目在交叉轴上的对齐方式。
+    &.items-start{// 交叉轴的起点对齐。
+        align-items: flex-start;
+    }
+    &.items-end{// 交叉轴的终点对齐。
+        align-items: flex-end;
+    }
+    &.items-center{// 交叉轴的中点对齐。
+        align-items: center;
+    }
+    &.items-baseline{// 项目的第一行文字的基线对齐。
+        align-items: baseline;
+    }
+    &.items-stretch{// （默认值）如果项目未设置高度或设为auto，将占满整个容器的高度。
+        align-items: stretch;
+    }
+    // 3.6 align-content: 多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+    &.content-start{// 与交叉轴的起点对齐。
+        align-content: flex-start;
+    }
+    &.content-end{// 与交叉轴的终点对齐。
+        align-content: flex-end;
+    }
+    &.content-center{// 与交叉轴的中点对齐。
+        align-content: center;
+    }
+    &.content-between{// 与交叉轴两端对齐，轴线之间的间隔平均分布。
+        align-content: space-between;
+    }
+    &.content-around{// 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+        align-content: space-around;
+    }
+    &.content-stretch{// （默认值）轴线占满整个交叉轴。
+        align-content: stretch;
+    }
+    .item{// 项目的属性    
+        flex: 0 1 auto;// 是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+        &.item-order{// 项目的排列顺序。数值越小，排列越靠前，默认为0。
+            order: 0;
+        }
+        &.item-grow{// 项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+            // 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+            flex-grow: 0;
+        }
+        &.item-shrink{// 项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+            //如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。
+            flex-shrink: 1;
+        }
+        &.item-basis{// 在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+            //它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。
+            flex-basis: auto;
+        }
+        &.item-flex{// 是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+            flex: 0 1 auto;
+        }
+        &.item-self{// 允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+            align-self: auto;
+        }
+    }
+}
+
+/********************************************************** CSS图形 **********************************************************/
+
+.cusp:after {// 尖括号
+    content: " ";
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-width: 1px 1px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+}
+.hook{// 对勾
+    width: 44px;// 同步乘除相同倍数
+    height: 22px;// 同步乘除相同倍数
+    position: relative;
+    left: 50%;
+    margin-left: -18px;// 同步乘除相同倍数
+    transform: rotate(-45deg);
+    overflow: hidden;
+    &:before,&:after{
+        content: "";
+        position: absolute;
+        background: #10AB62;
+        border-radius: 0.8px;// 同步乘除相同倍数
+    }
+    &:before{
+        width: 4px;// 同步乘除相同倍数
+        height: 22px;// 同步乘除相同倍数
+        left: 0;
+    }
+    &:after{
+        width: 40px;// 同步乘除相同倍数
+        height: 4px;// 同步乘除相同倍数
+        bottom: 0;
+    };
+    &.animation{
+        @keyframes dgLeft{0%{top:-100%}100%{top:0%}}
+        @keyframes dgRight{0%{left:-100%}100%{left:0%}}  
+        &:before{
+            animation: dgLeft 0.3s linear 0.5s 1 both;
+        }
+        &:after{
+            animation: dgRight 0.2s linear 0.8s 1 both;
+        };  
+    }
+}
+/**************************** 三角形：https://css-tricks.com/examples/ShapesOfCSS/ ****************************/
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-color: #000;
+    border-top: 50px solid transparent;
+    border-right: 100px solid #000;
+    border-bottom: 50px solid transparent;
+}
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 100px solid red;
+    border-bottom: 50px solid transparent;
+}
+
+// Arrows三角形提示框，From Bootstrap V3
+.popover{
+    &>.arrow,
+    &>.arrow:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+    &>.arrow {
+        border-width: 7px;
+        &:after {
+            border-width: 6px;
+            content: "";
+        }
+    }
+    &.top>.arrow {
+        left: 50%;
+        margin-left: -7px;
+        border-bottom-width: 0;
+        border-top-color: #c3c3c3;
+        //border-top-color: rgba(0, 0, 0, 0.25);
+        bottom: -7px;
+        &:after {
+            content: " ";
+            bottom: 1px;
+            margin-left: -6px;
+            border-bottom-width: 0;
+            border-top-color: #fafafa;
+        }
+    }
+    &.right>.arrow {
+        top: 50%;
+        left: -7px;
+        margin-top: -7px;
+        border-left-width: 0;
+        border-right-color: #c3c3c3;
+        //border-right-color: rgba(0, 0, 0, 0.25);
+        &:after {
+            content: " ";
+            left: 1px;
+            bottom: -6px;
+            border-left-width: 0;
+            border-right-color: #fafafa;
+        }
+    }
+    &.bottom>.arrow {
+        left: 50%;
+        margin-left: -7px;
+        border-top-width: 0;
+        border-bottom-color: #c3c3c3;
+        //border-bottom-color: rgba(0, 0, 0, 0.25);
+        top: -7px;
+        &:after {
+            content: " ";
+            top: 1px;
+            margin-left: -6px;
+            border-top-width: 0;
+            border-bottom-color: #fafafa;
+        }
+    }
+    &.left>.arrow {
+        top: 50%;
+        right: -7px;
+        margin-top: -7px;
+        border-right-width: 0;
+        border-left-color: #c3c3c3;
+        //border-left-color: rgba(0, 0, 0, 0.25);
+        &:after {
+            content: " ";
+            right: 1px;
+            border-right-width: 0;
+            border-left-color: #fafafa;
+            bottom: -6px;
+        }
+    }
+}
+// 三角形对话框有border
+.arrow_up {
+    position: relative;
+    background: #fff;
+    border: 1px solid #d5d5d5;
+    &:after, &:before {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #fff;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+    &:before {
+        border-color: rgba(213, 213, 213, 0);
+        border-bottom-color: #d5d5d5;
+        border-width: 11px;
+        margin-left: -11px;
+    }
+}
+
+// 三角对话框无border
+.arrow_up_noBd {
+    position: relative;
+    background: #fffafa;
+    &:after {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(255, 250, 250, 0);
+        border-bottom-color: #fffafa;
+        border-width: 8px;
+        margin-left: -8px;
+    }
+}
+// css空心箭头
+.arrowUp:after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    transform: rotate(-45deg);
+    transform-origin: center;
+
+}
+.arrowDown:after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-bottom: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    transform: rotate(45deg);
+    transform-origin: center;
+
+}
+.arrowRight:after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    transform: rotate(45deg);
+    transform-origin: center;
+}

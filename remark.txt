@@ -1,0 +1,127 @@
+业务流程
+
+1.列表：
+	/mcs/mold/process/list=>（appId、moldName、moldStatus（2上线，3下线）、pageNo、pageSize）
+
+2.列表中的操作：
+	查看流程：路由/risk/proMg/businessList/editFlow?type=look，根据路由上type==look决定
+	编辑流程：路由/risk/proMg/businessList/editFlow?type=edit，根据路由上type==edit决定
+	复制流程：路由/risk/proMg/businessAdd?type=copy，根据路由上type==copy决定
+	上线：提示是否上线？=>/mcs/mold/process/online=>请求完成后请求列表/mcs/mold/process/list刷新
+	下线：提示是否下线？=>/mcs/mold/process/offline=>请求完成后请求列表/mcs/mold/process/list刷新
+	删除：提示是否删除？=>/mcs/mold/process/delete=>请求完成后请求列表/mcs/mold/process/list刷新
+
+3.新增/复制流程：
+	根据路由type(''/copy)=>前端校验是否通过验证（是否必填）=>if copy=>/mcs/mold/process/copy=>(originMoldId、referMoldId、moldName、moldCode、remark) else=>/mcs/mold/process/create=>（参数同上），另外产品线列表=>/mcs/product/list,流程列表=>/mcs/mold/process/code/list
+
+4.编辑流程：
+	进入页面：mcs/mold/content，获取面板信息（位置、节点信息、连线、是否是冠军挑战者）以及产品线信息
+	拖拽面板菜单节点在面板中创建节点=>/mcs/node/create，更新节点信息=>/mcs/node/update	
+	添加绑定：
+		决策流：
+			直接绑定：
+				获取模型列表：/mcs/mold/config/list，获取模型列表时moldType: "1"
+				选择列表：请求相应模板信息=>/mcs/mold/variable/query
+				绑定信息：/mcs/node/mold/bind
+				查看绑定信息：/mcs/mold/config/list、/mcs/node/mold/query(查看绑定)、/mcs/mold/variable/query
+			冠军挑战者：
+				点击+号进入绑定列表页，点击名称进入选择模板页
+				获取模型列表：/mcs/mold/config/list
+				选择列表：请求相应模板信息=>/mcs/mold/variable/query
+				绑定信息：/mcs/node/mold/bind（这里需要输入流量小数才可通过）
+				绑定完成后页面自动刷新看到冠军挑战者信息
+				
+		风险定价：同决策流，获取模型列表时moldType: "3"
+		评分卡：同决策流，获取模型列表时moldType: "4"
+	修改流程名称/备注信息：mcs/mold/edit
+	
+
+模型列表
+
+1.列表：
+	/mcs/mold/list=>(appId、moldName、moldVersion、moldStatus、updateStartTime、updateEndTime、pageNo、pageSize)
+	产品线列表=>/mcs/product/list
+	
+2.列表中的操作：
+	上线：提示是否上线？=>/mcs/mold/online,请求完成后请求列表/mcs/mold/list局部刷新
+	下线：提示是否下线？=>/mcs/mold/offline,请求完成后请求列表/mcs/mold/list局部刷新
+	参数列表：暂时没有看，后续添加上去
+	编辑：路由/risk/modelMg/modelUml?type=edit
+	查看：路由/risk/modelMg/modelUml?type=look
+	复制：路由/risk/modelMg/modelList/modelAdd?type=copy
+	删除：提示是否删除？=>/mcs/mold/delete,请求完成后请求列表/mcs/mold/list局部刷新
+
+3.新增/复制模型：
+	产品线列表=>/mcs/product/list
+	模型名称=>/mcs/mold/code/list
+	创建：/mcs/mold/create，复制：/mcs/mold/copy
+
+4.编辑模型：
+	进入页面：mcs/mold/content，获取面板信息（位置、节点信息、连线、是否是冠军挑战者）以及产品线信息
+	拖拽面板菜单节点在面板中创建节点=>/mcs/node/create，更新节点信息=>/mcs/node/update	
+	添加绑定：
+		策略：
+			直接绑定：
+				获取模板列表：/mcs/policy/template/list
+		 		if=>选择模板，获取变量列表=>/mcs/rule/template/list,获取策略信息=>/mcs/policy/query,
+				保存绑定=>mcs/node/policy/bind,更新节点
+				if=>新增模板，新增模板页面，选择变量/mcs/rule/template/list，加载变量信息mcs/rule/query，
+				保存为策略模板=>/mcs/policy/create,(可以再策略管理中的策略模板中查询模板列表)
+				保存绑定=>mcs/node/policy/bind,更新节点
+			
+			添加冠军挑战者：
+				获取模板列表：/mcs/policy/template/list
+				if=>选择模板，获取变量列表=>/mcs/rule/template/list,获取策略信息=>/mcs/policy/query,
+				保存到本地回到冠军挑战者页面，点击继续添加重新走一遍
+				添加流量占比，点击绑定按钮mcs/node/policy/bind,刷新页面，
+				获取相应面板信息mcs/mold/content
+
+				if=>新增模板，新增模板页面，选择变量/mcs/rule/template/list，加载变量信息mcs/rule/query，
+				保存为策略模板=>/mcs/policy/create,(可以再策略管理中的策略模板中查询模板列表)
+				保存到本地回到冠军挑战者页面，点击继续添加重新走一遍
+				添加流量占比，点击绑定按钮mcs/node/policy/bind,刷新页面，
+				获取相应面板信息mcs/mold/content
+				
+				已经绑定：
+			
+
+		并行：		
+			通过父级页面传参variableListUml的长度判断，if true，说明是老节点，获取节点数据信息=>/mcs/node/parallel/query，
+								   else 请求查询变量=>/mcs/variable/config/list
+			if true ,调用getVarType方法，赋值枚举值变量值
+			保存=>	/mcs/node/parallel/bind
+
+		分类器：
+			获取节点信息=>/mcs/node/category/query,通过方法getVarType调用赋值枚举值，
+			保存=>/mcs/node/category/bind
+		评分卡：
+			获取节点信息=>
+			
+		评分卡模型：
+			获取变量列表=>/mcs/variable/config/list
+			获取变量枚举值列表=>/mcs/variable/enum/list
+			获取模型信息以及配置列表=>/mcs/scorecard/content
+			保存评分卡=>/mcs/scorecard/feature/create
+			
+
+监控预警系列
+	用到的技术点：
+		echarts（图表类）、file-saver（导出CVS文件）
+	注意点：
+		tabs切换时渲染问题
+		
+	相关文档：https://www.echartsjs.com/examples/#chart-type-line
+
+	反欺诈:
+		业务数据=>/mcs/monitor/statistic/af/model/result
+		规则数据：
+			规则名称=>/mcs/monitor/statistic/rule/result/by/name
+			策略名称=>/mcs/monitor/statistic/policy/result
+			决策代码=>/mcs/monitor/statistic/rule/result/by/code
+	授信模型：
+		授信=>/mcs/monitor/statistic/credit/model/result
+	评分卡：
+		评分卡数据=>/mcs/monitor/statistic/card/model/result
+		评分卡数据导出=>/mcs/monitor/statistic/card/model/result/detail
+
+	
